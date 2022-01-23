@@ -10,12 +10,12 @@ def my_func(suffix, path):
             final_files.append(path+f)
         else:
             final_files.extend(my_func(suffix, path+f+"/"))
-    return final_files
+    return [f for f in final_files if f.endswith(suffix)]
 
 if __name__ == '__main__':
     mypath="/Users/Tiago/git/cocus/"
     first_level=mypath+"1/first_level_files/"
 
-    final_files=my_func(None, mypath)
+    final_files=my_func(".pdf", mypath+"1/")
     for f in final_files:
         print(f)
