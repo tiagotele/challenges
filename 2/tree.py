@@ -7,9 +7,10 @@ class Tree:
         self._lock = threading.Lock()
     
     def get_fruit(self):
-        if self.fruits >= 0:
+        if self.fruits > 0:
             with self._lock:
                 self.fruits -= 1
-        else:
-            #TODO
-            pass
+    
+    def is_empty(self):
+        print(f"Remaining={self.fruits}")
+        return self.fruits == 0

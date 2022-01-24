@@ -7,10 +7,10 @@ if __name__ == "__main__":
     t=Tree()
 
     farmers=[]
-    for index in range(30):
+    for index in range(3):
         farmers.append(Farmer(index,t))
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         farmers_future = [ executor.submit(f.get_fruit) for f in farmers ]
 
 
