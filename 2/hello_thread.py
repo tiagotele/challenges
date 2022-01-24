@@ -1,6 +1,7 @@
 import logging
 import threading
 import concurrent.futures
+import random
 import time
 
 class FakeDatabase:
@@ -24,7 +25,8 @@ class FakeDatabase:
 
 def thread_function(name):
     logging.info("Thread %s: starting", name)
-    time.sleep(2)
+    time_to_collect=random.randint(0, 2)
+    time.sleep(time_to_collect)
     logging.info("Thread %s: finishing", name)
 
 if __name__ == "__main__":
@@ -34,9 +36,12 @@ if __name__ == "__main__":
     logging.basicConfig(format=format, level=logging.DEBUG,
                         datefmt="%H:%M:%S")
 
-    database = FakeDatabase()
-    logging.info("Testing update. Starting value is %d.", database.value)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-        for index in range(2):
-            executor.submit(database.update, index)
-    logging.info("Testing update. Ending value is %d.", database.value)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        executor.map(thread_function, range(3))
+
+    # database = FakeDatabase()
+    # logging.info("Testing update. Starting value is %d.", database.value)
+    # with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+    #     for index in range(2):
+    #         executor.submit(database.update, index)
+    # logging.info("Testing update. Ending value is %d.", database.value)
