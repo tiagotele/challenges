@@ -28,7 +28,7 @@ class Farmer:
         self.dirty_basket.put_fruit()
 
     def get_fruit_from_dirty_basket(self):
-        while self.dirty_basket.will_have_more_fruits == True:
+        while self.clean_basket.will_have_more_fruits == True:
             print(f"cleaner {self.id} getting fruit from dirty basket")
             self.dirty_basket.get_fruit()
             time_to_collect=random.randint(MIN_RANGE, MAX_CACHE_SIZE)
