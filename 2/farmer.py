@@ -1,11 +1,13 @@
 from tree import Tree
+from dirty_basket import Basket
 import random
 import time
 
 class Farmer:
-    def __init__(self, id: int, tree: Tree) -> None:
+    def __init__(self, id: int, tree: Tree, dirty_basket: Basket) -> None:
         self.id=id
         self.tree=tree
+        self.dirty_basket = dirty_basket
     
     def get_fruit(self):
         while self.tree.is_empty() == False:
@@ -18,4 +20,4 @@ class Farmer:
         print(f"farmer {self.id} end job")
 
     def _put_fruit_on_basket(self):
-        pass
+        self.dirty_basket.put_fruit()
