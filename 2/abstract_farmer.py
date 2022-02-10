@@ -10,16 +10,17 @@ MIN_RANGE=1
 
 
 class AFarmer(ABC):
-    def __init__(self, source_basket: Basket = None, destiny_basket: Basket = None) -> None:
+    def __init__(self, id:int, source_basket: Basket = None, destiny_basket: Basket = None) -> None:
+        self.id=id
         self.source_basket=source_basket
         self.destiny_basket=destiny_basket
 
     @abstractmethod
-    def getFruit(self):
+    def get_fruit(self):
         pass
 
     @abstractmethod
-    def putFruit(self):
+    def put_fruit(self):
         pass
 
     @abstractmethod
