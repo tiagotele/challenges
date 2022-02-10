@@ -14,6 +14,7 @@ MIN_RANGE=1
 class DirtyFarmer(AFarmer):
     def __init__(self, id, source_basket: Basket = None, destiny_basket: Basket = None) -> None:
         super().__init__(id, source_basket, destiny_basket)
+        self.is_job_done=False
 
     
     def get_fruit(self):
@@ -26,6 +27,7 @@ class DirtyFarmer(AFarmer):
             time.sleep(time_to_collect)
             self.put_fruit()
         # TODO notify is done
+        self.is_job_done=True
 
     def put_fruit(self):
         """Put fruits on Dirty Basket

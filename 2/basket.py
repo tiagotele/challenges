@@ -10,6 +10,7 @@ class Basket():
         if self.fruits > 0:
             with self._lock:
                 self.fruits -= 1
+        return self.fruits
     
     def put_fruit(self):
         with self._lock:
