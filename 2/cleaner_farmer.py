@@ -16,6 +16,7 @@ class CleanFarmer(AFarmer):
     def __init__(self, id, dirty_farmer, source_basket: Basket = None, destiny_basket: Basket = None) -> None:
         super().__init__(id, source_basket, destiny_basket)
         self.dirty_farmer=dirty_farmer
+        self.amount=0
 
     
     def get_fruit(self):
@@ -23,8 +24,8 @@ class CleanFarmer(AFarmer):
         """
         while True:
             print(f"Cleaner {self.id} getting fruit from {self.source_basket.id}.")
-            amount=self.source_basket.get_fruit()
-            self.put_fruit(amount)
+            self.amount=self.source_basket.get_fruit()
+            self.put_fruit(self.amount)
             if self._are_dirty_farmer_working() == False:
                 break
             time_to_collect=random.randint(MIN_RANGE, MAX_RANGE)
