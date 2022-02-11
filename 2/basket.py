@@ -7,18 +7,20 @@ class Basket():
         self._lock=threading.Lock()
 
     def get_fruit(self):
-        if self.fruits > 0:
-            with self._lock:
-                self.fruits -= 1
-        return self.fruits
-    
-    def put_fruit(self):
         with self._lock:
-            self.fruits += 1
+            if self.fruits > 0:
+                self.fruits -= 1
+                return 1
+            return 0
+    
+    def put_fruit(self, amount):
+        with self._lock:
+            self.fruits += amount
 
     def is_empty(self):
-        print(f"{self.id} remaining {self.fruits} fruits.")
-        return self.fruits == 0
+        with self._lock:
+            print(f"{self.id} remaining {self.fruits} fruits.")
+            return self.fruits == 0
     
     def status(self):
         return f"{self.id} has {self.fruits}."

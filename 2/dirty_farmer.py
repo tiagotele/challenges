@@ -19,20 +19,22 @@ class DirtyFarmer(AFarmer):
     def get_fruit(self):
         """Get Fruits from Tree
         """
-        while self.source_basket.is_empty() == False:
-            #print(f"Farmer {self.id} getting fruit from {self.source_basket.id}.")
-            self.source_basket.get_fruit()
+        while True:
+            print(f"Farmer {self.id} getting fruit from {self.source_basket.id}.")
+            amount=self.source_basket.get_fruit()
+            self.put_fruit(amount)
+            if self.source_basket.is_empty() == True:
+                break
             time_to_collect=random.randint(MIN_RANGE, MAX_RANGE)
             time.sleep(time_to_collect)
-            self.put_fruit()
         # TODO notify is done
         self.is_job_finisehd=True
 
-    def put_fruit(self):
+    def put_fruit(self, amount):
         """Put fruits on Dirty Basket
         """
-        #print(f"Farmer {self.id} putting fruit on {self.destiny_basket.id}.")
-        self.destiny_basket.put_fruit()
+        print(f"Farmer {self.id} putting fruit on {self.destiny_basket.id}.")
+        self.destiny_basket.put_fruit(amount)
 
     def start_job(self):
         pass

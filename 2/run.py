@@ -4,16 +4,13 @@ from cleaner_farmer import CleanFarmer
 import concurrent.futures
 
 if __name__ == "__main__":
-    tree=Basket("Tree",10)
+    tree=Basket("Tree",50)
     dirty_basket=Basket("Dirty Basket", 0)
     clean_basket=Basket("Clean Basket", 0)
 
     dirty_farmer=[]
     for index in range(3):
         dirty_farmer.append(DirtyFarmer(index, tree, dirty_basket))
-
-    print(f"type = {type(dirty_farmer[0])}")
-    
 
     clean_farmer=[]
     for index in range(3):
