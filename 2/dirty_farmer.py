@@ -2,14 +2,13 @@ from tree import Tree
 from basket import Basket
 from abstract_farmer import AFarmer
 
-from urllib.parse import MAX_CACHE_SIZE
 from tree import Tree
 from dirty_basket import Basket
 import random
 import time
 
-MAX_RANGE=3
-MIN_RANGE=1
+MAX_RANGE=6
+MIN_RANGE=3
 
 class DirtyFarmer(AFarmer):
     def __init__(self, id, source_basket: Basket = None, destiny_basket: Basket = None) -> None:
