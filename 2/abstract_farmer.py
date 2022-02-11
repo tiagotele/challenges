@@ -14,6 +14,7 @@ class AFarmer(ABC):
         self.id=id
         self.source_basket=source_basket
         self.destiny_basket=destiny_basket
+        self.is_job_finisehd=False
 
     @abstractmethod
     def get_fruit(self):
