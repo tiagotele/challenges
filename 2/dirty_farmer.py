@@ -1,8 +1,5 @@
-from tree import Tree
 from basket import Basket
 from abstract_farmer import AFarmer
-
-from tree import Tree
 from dirty_basket import Basket
 import random
 import time

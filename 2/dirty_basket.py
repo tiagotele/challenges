@@ -3,7 +3,6 @@ import threading
 class Basket:
     def __init__(self, fruits=0, name='') -> None:
         self.fruits=fruits
-        self.will_have_more_fruits=True
         self._lock = threading.Lock()
         self.name=name
     
