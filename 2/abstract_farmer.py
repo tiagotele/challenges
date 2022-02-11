@@ -25,5 +25,5 @@ class AFarmer(ABC):
         pass
 
     @abstractmethod
-    def start_job(self):
+    def status(self):
         pass

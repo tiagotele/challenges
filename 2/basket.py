@@ -19,9 +19,8 @@ class Basket():
 
     def is_empty(self):
         with self._lock:
-            print(f"{self.id} remaining {self.fruits} fruits.")
             return self.fruits == 0
     
     def status(self):
-        return f"{self.id} has {self.fruits}."
+        return f"{self.id} ({self.fruits})"
     

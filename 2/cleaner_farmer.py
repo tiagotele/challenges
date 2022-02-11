@@ -23,7 +23,6 @@ class CleanFarmer(AFarmer):
         """Get Fruits from Dirty Basket
         """
         while True:
-            print(f"Cleaner {self.id} getting fruit from {self.source_basket.id}.")
             self.amount=self.source_basket.get_fruit()
             self.put_fruit(self.amount)
             if self._are_dirty_farmer_working() == False:
@@ -35,9 +34,7 @@ class CleanFarmer(AFarmer):
     def put_fruit(self, amount):
         """Put fruits on Clean Basket
         """
-        print(f"Cleaner {self.id} putting fruit on {self.destiny_basket.id}.")
         self.destiny_basket.put_fruit(amount)
-        #TODO check if dirty farmers has finished their jobs
 
     def _are_dirty_farmer_working(self):
         for e in self.dirty_farmer:       
@@ -45,5 +42,5 @@ class CleanFarmer(AFarmer):
                 return True
         return False
 
-    def start_job(self):
-        pass
+    def status(self):
+        return f"Cleaner{(self.id+1)} ({self.amount})"
